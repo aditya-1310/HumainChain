@@ -2,7 +2,28 @@ import { Request, Response } from 'express';
 import Incident from '../models/Incident';
 import { CreateIncidentInput, IncidentId } from '../schemas/incidentSchema';
 
-
+/**
+ * @swagger
+ * /api/incidents:
+ *   get:
+ *     summary: Get all incidents
+ *     tags: [Incidents]
+ *     responses:
+ *       200:
+ *         description: List of all incidents
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Incident'
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 export const getAllIncidents = async (req: Request, res: Response): Promise<void> => {
   try {
     const { severity, search, limit = 10, page = 1, sortBy = 'reported_at', order = 'desc' } = req.query;
