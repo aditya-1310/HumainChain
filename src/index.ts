@@ -16,6 +16,9 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Connect to MongoDB
+connectDB();
+
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
@@ -26,15 +29,18 @@ app.use('/api/incidents', incidentRoutes);
 app.get('/', (req, res) => {
   res.json({ 
     message: 'AI Safety Incident Log API is running',
-    documentation: '/api-docs'
+    documentation: '/api-docs',
+    version: '1.0.0'
   });
 });
 
-// Connect to MongoDB
-connectDB();
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+    console.log(`API Documentation available at http://localhost:${port}/api-docs`);
+  });
+}
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-  console.log(`API Documentation available at http://localhost:${port}/api-docs`);
-}); 
+// Export for Vercel
+export default app; 

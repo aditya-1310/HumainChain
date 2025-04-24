@@ -1,36 +1,39 @@
 {
   "name": "ai_safety",
   "version": "1.0.0",
+  "description": "AI Safety Incident Log API",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
-    "start": "npm run build && node dist/index.js",
+    "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
-    "seed": "ts-node src/scripts/seedData.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "generate-docs": "ts-node scripts/generate-swagger.ts"
+    "postinstall": "npm run build",
+    "generate-docs": "ts-node scripts/generate-swagger.ts",
+    "vercel-build": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "AI Safety Incident Log API",
   "dependencies": {
-    "@types/swagger-jsdoc": "^6.0.4",
-    "@types/swagger-ui-express": "^4.1.8",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
     "mongoose": "^8.2.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
-    "zod": "^3.24.3"
+    "zod": "^3.22.4",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.24",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.3"
+    "ts-node-dev": "^2.0.0"
   }
 }
