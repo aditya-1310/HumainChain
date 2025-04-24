@@ -1,10 +1,10 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IIncident extends Document {
-  title: string;
+   title: string;
   description: string;
   severity: 'Low' | 'Medium' | 'High';
-  reported_at: Date;
+  reported_at: Date ;
 }
 
 const IncidentSchema: Schema = new Schema({
@@ -27,4 +27,4 @@ const IncidentSchema: Schema = new Schema({
   },
 });
 
-export default mongoose.model<IIncident>('Incident', IncidentSchema); 
+export default  mongoose.model<IIncident>('Incident', IncidentSchema); 
