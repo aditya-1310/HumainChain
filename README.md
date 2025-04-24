@@ -8,6 +8,7 @@ A RESTful API service for logging and managing AI safety incidents.
 - TypeScript
 - Express
 - MongoDB with Mongoose ODM
+- Swagger/OpenAPI for API documentation
 
 ## Prerequisites
 
@@ -38,6 +39,55 @@ A RESTful API service for logging and managing AI safety incidents.
    ```bash
    npx ts-node src/scripts/seedData.ts
    ```
+
+## API Documentation with Swagger
+
+The API is documented using OpenAPI/Swagger specification. You can access and interact with the API in multiple ways:
+
+### Interactive Swagger UI
+1. Start the server:
+   ```bash
+   npm run dev
+   ```
+2. Visit `http://localhost:3000/api-docs` in your browser
+3. You'll see the interactive Swagger UI where you can:
+   - View all available endpoints
+   - Test API calls directly from the browser
+   - See request/response schemas
+   - Try out different parameters
+
+### Swagger JSON
+- Access the raw Swagger documentation at `http://localhost:3000/api-docs.json`
+- Generate updated documentation anytime with:
+  ```bash
+  npm run generate-docs
+  ```
+- Find the generated documentation in `swagger.json` at the project root
+
+### Documentation Features
+- Complete API endpoint descriptions
+- Request/response schemas
+- Authentication requirements (if any)
+- Example requests and responses
+- Error responses
+- Input validation rules
+
+### Using Swagger UI
+1. **Exploring Endpoints**:
+   - Endpoints are grouped by tags (Incidents)
+   - Click on any endpoint to expand details
+   - See full request/response schemas
+
+2. **Testing Endpoints**:
+   - Click "Try it out" on any endpoint
+   - Fill in required parameters
+   - Execute requests directly from the UI
+   - See full response details
+
+3. **Error Responses**:
+   - Each endpoint shows possible error responses
+   - Includes error codes and response formats
+   - Test validation by sending invalid data
 
 ## Running the Application
 

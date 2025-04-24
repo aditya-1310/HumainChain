@@ -1,116 +1,53 @@
 import { Request, Response } from 'express';
 import Incident from '../models/Incident';
+import { CreateIncidentInput, IncidentId } from '../schemas/incidentSchema';
 
-interface CreateIncidentBody {
-  title: string;
-  description: string;
-  severity: 'Low' | 'Medium' | 'High';
-}
 
-interface IdParam {
-  id: string;
-}
-
-/**
- * @swagger
- * /api/incidents:
- *   get:
- *     summary: Get all incidents
- *     tags: [Incidents]
- *     responses:
- *       200:
- *         description: List of all incidents
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Incident'
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- */
-export const getAllIncidents = async (_req: Request, res: Response): Promise<void> => {
+export const getAllIncidents = async (req: Request, res: Response): Promise<void> => {
   try {
-    const incidents = await Incident.find().sort({ reported_at: -1 });
-    res.status(200).json(incidents);
+    const { severity, search, limit = 10, page = 1, sortBy = 'reported_at', order = 'desc' } = req.query;
+
+    // Build query
+    const query: any = {};
+    if (severity) query.severity = severity;
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: 'i' } },
+        { description: { $regex: search, $options: 'i' } },
+      ];
+    }
+
+    // Build sort object
+    const sortObject: any = {};
+    sortObject[sortBy as string] = order === 'asc' ? 1 : -1;
+
+    const incidents = await Incident.find(query)
+      .sort(sortObject)
+      .limit(Number(limit))
+      .skip((Number(page) - 1) * Number(limit));
+
+    const total = await Incident.countDocuments(query);
+
+    res.status(200).json({
+      incidents,
+      pagination: {
+        total,
+        page: Number(page),
+        pages: Math.ceil(total / Number(limit)),
+      },
+    });
   } catch (error) {
     res.status(500).json({ message: 'Error fetching incidents', error });
   }
 };
 
-/**
- * @swagger
- * /api/incidents:
- *   post:
- *     summary: Create a new incident
- *     tags: [Incidents]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - title
- *               - description
- *               - severity
- *             properties:
- *               title:
- *                 type: string
- *               description:
- *                 type: string
- *               severity:
- *                 type: string
- *                 enum: [Low, Medium, High]
- *     responses:
- *       201:
- *         description: Created incident
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Incident'
- *       400:
- *         description: Invalid input
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- */
+
 export const createIncident = async (
-  req: Request<{}, {}, CreateIncidentBody>,
+  req: Request<{}, {}, CreateIncidentInput>,
   res: Response
 ): Promise<void> => {
   try {
-    const { title, description, severity } = req.body;
-
-    // Validate required fields
-    if (!title || !description || !severity) {
-      res.status(400).json({ message: 'Missing required fields' });
-      return;
-    }
-
-    // Validate severity
-    if (!['Low', 'Medium', 'High'].includes(severity)) {
-      res.status(400).json({ message: 'Invalid severity level' });
-      return;
-    }
-
-    const incident = new Incident({
-      title,
-      description,
-      severity,
-    });
-
+    const incident = new Incident(req.body);
     const savedIncident = await incident.save();
     res.status(201).json(savedIncident);
   } catch (error) {
@@ -118,41 +55,9 @@ export const createIncident = async (
   }
 };
 
-/**
- * @swagger
- * /api/incidents/{id}:
- *   get:
- *     summary: Get an incident by ID
- *     tags: [Incidents]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Incident ID
- *     responses:
- *       200:
- *         description: The incident
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Incident'
- *       404:
- *         description: Incident not found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- */
+
 export const getIncidentById = async (
-  req: Request<IdParam>,
+  req: Request<{ id: string }>,
   res: Response
 ): Promise<void> => {
   try {
@@ -167,37 +72,9 @@ export const getIncidentById = async (
   }
 };
 
-/**
- * @swagger
- * /api/incidents/{id}:
- *   delete:
- *     summary: Delete an incident
- *     tags: [Incidents]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Incident ID
- *     responses:
- *       204:
- *         description: Incident deleted successfully
- *       404:
- *         description: Incident not found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- */
+
 export const deleteIncident = async (
-  req: Request<IdParam>,
+  req: Request<{ id: string }>,
   res: Response
 ): Promise<void> => {
   try {
