@@ -41,7 +41,50 @@ export const getAllIncidents = async (req: Request, res: Response): Promise<void
   }
 };
 
-
+/**
+ * @swagger
+ * /api/incidents:
+ *   post:
+ *     summary: Create a new incident
+ *     tags: [Incidents]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - description
+ *               - severity
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               severity:
+ *                 type: string
+ *                 enum: [Low, Medium, High]
+ *     responses:
+ *       201:
+ *         description: Created incident
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Incident'
+ *       400:
+ *         description: Invalid input
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 export const createIncident = async (
   req: Request<{}, {}, CreateIncidentInput>,
   res: Response
@@ -55,7 +98,39 @@ export const createIncident = async (
   }
 };
 
-
+/**
+ * @swagger
+ * /api/incidents/{id}:
+ *   get:
+ *     summary: Get an incident by ID
+ *     tags: [Incidents]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Incident ID
+ *     responses:
+ *       200:
+ *         description: The incident
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Incident'
+ *       404:
+ *         description: Incident not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 export const getIncidentById = async (
   req: Request<{ id: string }>,
   res: Response
@@ -72,7 +147,35 @@ export const getIncidentById = async (
   }
 };
 
-
+/**
+ * @swagger
+ * /api/incidents/{id}:
+ *   delete:
+ *     summary: Delete an incident
+ *     tags: [Incidents]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Incident ID
+ *     responses:
+ *       204:
+ *         description: Incident deleted successfully
+ *       404:
+ *         description: Incident not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
 export const deleteIncident = async (
   req: Request<{ id: string }>,
   res: Response
