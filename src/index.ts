@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
-import connectDB from './config/database';
+import connectDB from './config/database.ts';
 import incidentRoutes from './routes/incidents';
 import { specs } from './config/swagger';
 
