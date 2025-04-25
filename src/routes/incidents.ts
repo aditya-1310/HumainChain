@@ -4,13 +4,13 @@ import {
   createIncident,
   getIncidentById,
   deleteIncident,
-} from '../controllers/incidentController';
-import { validateRequest } from '../middleware/validateRequest';
+} from '../controllers/incidentController.ts';
+import { validateRequest } from '../middleware/validateRequest.ts';
 import { 
   createIncidentSchema, 
   incidentIdSchema,
   incidentQuerySchema 
-} from '../schemas/incidentSchema';
+} from '../schemas/incidentSchema.ts';
 import { z } from 'zod';
 
 const router = express.Router();
