@@ -2,9 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
-import connectDB from './config/database';
-import incidentRoutes from './routes/incidents';
-import { specs } from './config/swagger';
+import connectDB from './config/database.ts';
+import incidentRoutes from './routes/incidents.ts';
+import { specs } from './config/swagger.ts';
 
 // Load environment variables
 dotenv.config();
