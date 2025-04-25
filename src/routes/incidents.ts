@@ -10,7 +10,7 @@ import {
   createIncidentSchema, 
   incidentIdSchema,
   incidentQuerySchema 
-} from '../schemas/incidentSchema';
+} from '../schemas/incidentSchema.ts';
 import { z } from 'zod';
 
 const router = express.Router();
