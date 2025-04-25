@@ -4,8 +4,8 @@ import {
   createIncident,
   getIncidentById,
   deleteIncident,
-} from '../controllers/incidentController';
-import { validateRequest } from '../middleware/validateRequest';
+} from '../controllers/incidentController.ts';
+import { validateRequest } from '../middleware/validateRequest.ts';
 import { 
   createIncidentSchema, 
   incidentIdSchema,
