@@ -9,8 +9,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "clean": "rimraf dist",
-    "build": "npm run clean && tsc --project tsconfig.json",
+    "build": "tsc --project tsconfig.json",
     "generate-docs": "ts-node scripts/generate-swagger.ts"
   },
   "keywords": [],
