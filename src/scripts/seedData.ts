@@ -33,7 +33,7 @@ const sampleIncidents = [
 
 const seedData = async () => {
   try {
-    const mongoURI = process.env.mongodb || 'mongodb://localhost:27017/ai_safety_incidents';
+    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ai_safety_incidents';
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
 

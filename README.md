@@ -27,7 +27,7 @@ A RESTful API service for logging and managing AI safety incidents.
 3. Create a `.env` file in the root directory with the following content:
    ```
    PORT=3000
-   mongodb =mongodb://localhost:27017/ai_safety_incidents
+   MONGODB_URI=mongodb://localhost:27017/ai_safety_incidents
    ```
 
 4. Build the TypeScript code:
