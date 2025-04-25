@@ -19,6 +19,10 @@ const options: swaggerJsdoc.Options = {
         url: 'http://localhost:3000',
         description: 'Development server',
       },
+      {
+        url: 'https://humainchain-1.onrender.com',
+        description: 'Production server',
+      },
       // Add production server URL when deployed
     ],
     components: {
