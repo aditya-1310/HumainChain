@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import Incident from '../models/Incident.ts';
+import Incident from '../models/Incident';
 
 dotenv.config();
 

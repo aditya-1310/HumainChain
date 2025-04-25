@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import Incident from '../models/Incident.ts';
-import { CreateIncidentInput } from '../schemas/incidentSchema.ts';
-import {IncidentId} from '../schemas/incidentSchema.ts';
+import Incident from '../models/Incident';
+import { CreateIncidentInput } from '../schemas/incidentSchema';
+import {IncidentId} from '../schemas/incidentSchema';
 
 /**
  * @swagger
