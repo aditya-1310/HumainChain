@@ -5,6 +5,44 @@ A RESTful API service for logging and managing AI safety incidents.
 ### Deployed API Documentation
 - Access the live API documentation at: https://humainchain-1.onrender.com/api-docs/
 
+## Architecture
+
+![HumanChain AI Safety Incident Log API Flow](docs/images/api-flow.svg)
+
+The API follows a layered architecture pattern:
+
+1. **API Gateway (Express.js)**: 
+   - Handles incoming HTTP requests
+   - Routes requests to appropriate endpoints
+   - Provides API documentation access via Swagger UI
+
+2. **Routes Layer**:
+   - Defines available API endpoints
+   - Manages request routing to controllers
+   - Implements basic request validation
+
+3. **Controller Layer**:
+   - Processes incoming requests
+   - Implements business logic
+   - Manages response handling
+
+4. **Model Layer (Mongoose)**:
+   - Defines data schemas
+   - Handles database operations
+   - Provides data validation
+
+5. **Database (MongoDB)**:
+   - Stores incident data
+   - Provides persistent data storage
+
+### Available Endpoints
+
+- `GET /incidents` - Retrieve all incidents
+- `POST /incidents` - Create new incident
+- `GET /incidents/{id}` - Retrieve specific incident
+- `DELETE /incidents/{id}` - Delete specific incident
+- `GET /api-docs` - Access API documentation
+
 ## Tech Stack
 
 - Node.js
@@ -46,8 +84,6 @@ A RESTful API service for logging and managing AI safety incidents.
 ## API Documentation with Swagger
 
 The API is documented using OpenAPI/Swagger specification. You can access and interact with the API in multiple ways:
-
-
 
 ### Interactive Swagger UI
 1. Start the server:

@@ -1,0 +1,79 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">HumanChain AI Safety Incident Log API Flow</text>
+  
+  <!-- Client/User -->
+  <rect x="50" y="100" width="120" height="60" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="110" y="135" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Client/User</text>
+  
+  <!-- API Gateway -->
+  <rect x="300" y="100" width="200" height="60" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="400" y="135" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Express.js API Gateway</text>
+  
+  <!-- Routes Layer -->
+  <rect x="300" y="200" width="200" height="60" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="2" />
+  <text x="400" y="235" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Routes Layer</text>
+  
+  <!-- Controller Layer -->
+  <rect x="300" y="300" width="200" height="60" rx="10" fill="#e1f5fe" stroke="#0277bd" stroke-width="2" />
+  <text x="400" y="335" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Controller Layer</text>
+  
+  <!-- Model Layer -->
+  <rect x="300" y="400" width="200" height="60" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" />
+  <text x="400" y="435" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Model Layer (Mongoose)</text>
+  
+  <!-- Database -->
+  <rect x="650" y="400" width="120" height="60" rx="10" fill="#efebe9" stroke="#5d4037" stroke-width="2" />
+  <text x="710" y="435" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">MongoDB</text>
+  
+  <!-- Swagger Docs -->
+  <rect x="650" y="100" width="120" height="60" rx="10" fill="#ffebee" stroke="#c62828" stroke-width="2" />
+  <text x="710" y="135" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Swagger UI</text>
+  
+  <!-- Arrows -->
+  <!-- Client to API Gateway -->
+  <path d="M170 130 L300 130" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="230" y="120" font-family="Arial" font-size="12" text-anchor="middle" fill="#555">HTTP Request</text>
+  
+  <!-- API Gateway to Client -->
+  <path d="M300 150 L170 150" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="230" y="170" font-family="Arial" font-size="12" text-anchor="middle" fill="#555">HTTP Response</text>
+  
+  <!-- Client to Swagger -->
+  <path d="M170 120 C220 80 580 80 650 120" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="400" y="90" font-family="Arial" font-size="12" text-anchor="middle" fill="#555">API Documentation Access</text>
+  
+  <!-- API Gateway to Routes -->
+  <path d="M400 160 L400 200" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Routes to Controller -->
+  <path d="M400 260 L400 300" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Controller to Model -->
+  <path d="M400 360 L400 400" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Model to Database -->
+  <path d="M500 430 L650 430" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Database to Model -->
+  <path d="M650 410 L500 410" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- API Endpoints -->
+  <rect x="10" y="200" width="200" height="160" rx="10" fill="#f5f5f5" stroke="#757575" stroke-width="2" />
+  <text x="110" y="220" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">API Endpoints</text>
+  <text x="110" y="245" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">GET /incidents</text>
+  <text x="110" y="270" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">POST /incidents</text>
+  <text x="110" y="295" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">GET /incidents/{id}</text>
+  <text x="110" y="320" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">DELETE /incidents/{id}</text>
+  <text x="110" y="345" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">GET /api-docs</text>
+  
+  <!-- Arrow definitions -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+</svg>
