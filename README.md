@@ -2,6 +2,9 @@
 
 A RESTful API service for logging and managing AI safety incidents.
 
+### Deployed API Documentation
+- Access the live API documentation at: https://humainchain-1.onrender.com/api-docs/
+
 ## Tech Stack
 
 - Node.js
@@ -43,6 +46,8 @@ A RESTful API service for logging and managing AI safety incidents.
 ## API Documentation with Swagger
 
 The API is documented using OpenAPI/Swagger specification. You can access and interact with the API in multiple ways:
+
+
 
 ### Interactive Swagger UI
 1. Start the server:
