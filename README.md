@@ -7,7 +7,7 @@ A RESTful API service for logging and managing AI safety incidents.
 
 ## Architecture
 
-![HumanChain AI Safety Incident Log API Flow](docs/images/api-flow.svg)
+![HumanChain AI Safety Incident Log API Flow](docs/api-flow.svg)
 
 The API follows a layered architecture pattern:
 
