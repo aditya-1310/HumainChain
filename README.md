@@ -8,7 +8,7 @@ A RESTful API service for logging and managing AI safety incidents.
 
 ## Video Demonstration
 
-[![Watch the video](docs/image.png)](https://drive.google.com/file/d/1YVQMoEuW9JffIuO9d2qEWDVYxmEbTazJ/view)
+[![Watch the video]](https://drive.google.com/file/d/1YVQMoEuW9JffIuO9d2qEWDVYxmEbTazJ/view)
 
 
 ## Architecture
