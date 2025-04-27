@@ -6,6 +6,11 @@ A RESTful API service for logging and managing AI safety incidents.
       Change SERVER from Development to Production at live link
 - Access the live API documentation at: https://humainchain-1.onrender.com/api-docs/
 
+## Video Demonstration
+
+[![Watch the video](docs/image.png)](https://drive.google.com/file/d/1YVQMoEuW9JffIuO9d2qEWDVYxmEbTazJ/view)
+
+
 ## Architecture
 
 ![HumanChain AI Safety Incident Log API Flow](docs/api-flow.svg)
